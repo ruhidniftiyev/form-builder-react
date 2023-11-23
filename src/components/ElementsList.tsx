@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import ElementItem from './ElementItem';
+import text from '../assets/text.svg';
+import number from '../assets/number.svg';
 
-type Props = {}
+type Props = {};
 
 const ElementsList = (props: Props) => {
-    const [elements, setElements] = useState<any>(
-        [
-        {contentz:1},
-    ]
-)
+  const [elements] = useState<any>([
+    { id: 1, content: text },
+    { id: 2, content: number },
+  ]);
 
   return (
-      <div>
-          {
-              
-          }
+    <div className=''>
+      {elements.map((el: any) => (
+        <ElementItem {...el} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ElementsList
+export default ElementsList;

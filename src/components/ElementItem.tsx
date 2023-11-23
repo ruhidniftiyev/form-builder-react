@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 
 type Props = {
-  content: JSX.Element | string;
+  content: string | undefined;
 };
 
 const ElementItem: FC<Props> = ({ content }) => {
-  return <div>{content}</div>;
+  return (
+    <div style={{ backgroundColor: 'lightgray', height: '100px' }}>
+      <img src={content} alt="" />
+    </div>
+  );
 };
 
 export default ElementItem;
