@@ -1,1 +1,12 @@
-@import './components/all'
+@import './components/all';
+@import './libs/normalize';
+
+.container {
+  background-color: azure;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -10;
+}

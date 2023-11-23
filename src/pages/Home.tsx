@@ -1,12 +1,16 @@
 import React from 'react';
-import ElementsList from '../components/ElementsList';
+import ElementList from '../components/ElementList';
+import FormEditor from '../components/FormEditor';
+import FormSettings from '../components/FormSettings';
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
-    <div>
-      <ElementsList />
+    <div className="home">
+      <ElementList />
+      <FormEditor />
+      <FormSettings />
     </div>
   );
 };

@@ -1,3 +1,22 @@
-img {
-  width: 30px;
+.element-item {
+  width: 70px;
+  height: 80px;
+  border-radius: 50%/10%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    bottom: 8%;
+    right: -10%;
+    left: -10%;
+    background: inherit;
+    border-radius: 10%/50%;
+    z-index: -1;
+  }
 }

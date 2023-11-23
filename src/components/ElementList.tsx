@@ -5,14 +5,14 @@ import number from '../assets/number.svg';
 
 type Props = {};
 
-const ElementsList = (props: Props) => {
+const ElementList = (props: Props) => {
   const [elements] = useState<any>([
-    { id: 1, content: text },
-    { id: 2, content: number },
+    { id: 1, content: text, color: 'orange' },
+    { id: 2, content: number, color: 'green' },
   ]);
 
   return (
-    <div className=''>
+    <div className="element-list">
       {elements.map((el: any) => (
         <ElementItem {...el} />
       ))}
@@ -20,4 +20,4 @@ const ElementsList = (props: Props) => {
   );
 };
 
-export default ElementsList;
+export default ElementList;
