@@ -20,10 +20,6 @@ const ElementList = (props: Props) => {
     { id: 2, content: number, color: 'green', title: 'Number input' },
   ]);
 
-  const SelectInput = elements.extend({
-     
-   })
-
   return (
     <div className="elements">
       <p className="elements__title">ELEMENTS</p>
