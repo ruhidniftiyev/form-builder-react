@@ -1,33 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-type Props = {};
+type Props = {
+  form: any;
+};
 
-const FormBuilder = (props: Props) => {
-  const [content, setContent] = useState<any>([
-    {
-      element: 'input',
-      settings: {
-        type: 'text',
-        placeholder: 'Your name',
-      },
-    },
-    {
-      element: 'input',
-      settings: {
-        type: 'text',
-        placeholder: 'Your surname',
-      },
-    },
-    {
-      element: 'input',
-      settings: {
-        type: 'number',
-        placeholder: 'Your age',
-      },
-    },
-  ]);
-
-  return <div className="form-builder">FormBuiler</div>;
+const FormBuilder = ({ form }) => {
+  return (
+    <div>
+      <form>
+        
+      </form>
+    </div>
+  );
 };
 
 export default FormBuilder;

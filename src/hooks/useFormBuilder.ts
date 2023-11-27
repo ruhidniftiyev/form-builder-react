@@ -1,3 +1,3 @@
-// const useFormBuilder = (formContent: any) => {
-//   return {};
-// };
+export const useFormBuilder = (formContent: any) => {
+  return {};
+};

@@ -1,0 +1,14 @@
+.form-builder {
+    width: 50%;
+    height: 90vh;
+    background-color: bisque;
+  
+    &__title {
+      height: 60px;
+      border-bottom: 2px solid lightgray;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+    }
+  }
+  
