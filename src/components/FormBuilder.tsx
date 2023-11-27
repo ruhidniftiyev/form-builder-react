@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 type Props = {
   form: any;
 };
 
-const FormBuilder = ({ form }) => {
+const FormBuilder: FC<Props> = ({ form }) => {
   return (
-    <div>
-      <form>
+    <div className='form-builder'>
+      <form className='form-builder__form'>
         
       </form>
     </div>
