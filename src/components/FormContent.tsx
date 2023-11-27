@@ -30,7 +30,7 @@ const FormContent = (props: Props) => {
   ]);
 
   const [form, setForm] = useState<any>({
-    elements: [TextInput, SelectElement],
+    elements: [TextInput, TextInput, SelectElement],
   });
 
   return (
