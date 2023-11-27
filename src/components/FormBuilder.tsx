@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TiDelete } from 'react-icons/ti'
+import { TiDelete } from 'react-icons/ti';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
 type Props = {
@@ -7,7 +7,11 @@ type Props = {
 };
 
 const FormBuilder: FC<Props> = ({ form }) => {
+  const dispatch = useAppDispatch;
 
+  const removeFormElement = () => {
+    dispatch();
+  };
 
   return (
     <div className="form-builder">

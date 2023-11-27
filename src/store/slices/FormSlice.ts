@@ -41,9 +41,14 @@ const formSlice = createSlice({
     addElementToContent: (state, action: PayloadAction<IFormElement>) => {
       state.content = [...state.content, action.payload];
     },
+    removeElementFromContent: (state, action: PayloadAction<string>) => {
+      state.content = state.content.filter(
+        (formElement: IFormElement) => formElement.id !== action.payload,
+      );
+    },
   },
 });
 
 export default formSlice.reducer;
 
-export const { addElementToContent } = formSlice.actions;
+export const { addElementToContent, removeElementFromContent } = formSlice.actions;
