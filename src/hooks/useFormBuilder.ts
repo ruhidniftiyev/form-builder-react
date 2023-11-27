@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import { useAppDispatch } from './useAppDispatch';
-import { useAppSelector } from './useAppSelector';
-
-interface IFormElement {
-  type: string;
-  placeholder: string;
-}
+import { IFormElement } from '../models/IFormElement';
 
 interface IFormBuilderProporties {
   extensions: any;
@@ -15,6 +9,7 @@ interface IFormBuilderProporties {
 
 interface IBuilderReturned {
   content: IFormElement[];
+  formCustomExtensions: any[];
   addFormElement: (c: any) => void;
   removeFormElement: (index: any) => void;
 }
@@ -25,6 +20,7 @@ export const useFormBuilder = ({
   onChange,
 }: IFormBuilderProporties): IBuilderReturned => {
   const [formContent, setFormContent] = useState<IFormElement[]>(content);
+  const [formCustomExtensions, setFormCustomExtensions] = useState<IFormElement[]>(extensions);
 
   const addFormElement = (c: any): void => {
     setFormContent([...formContent, c]);
@@ -38,6 +34,7 @@ export const useFormBuilder = ({
 
   return {
     content: formContent,
+    formCustomExtensions,
     addFormElement,
     removeFormElement,
   };

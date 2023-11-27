@@ -10,8 +10,20 @@ export const TextInput = {
   icon: <LuTextCursorInput style={iconStyles} />,
   color: '#990066',
 
-  settings: {},
+  settings: {
+    placeholder: 'Text input',
+  },
 
+  renderSettings: function (text: string) {
+    return (
+      <>
+        <input
+          value={this.settings.placeholder}
+          onChange={(e) => (this.settings.placeholder = e.target.value)}
+        />
+      </>
+    );
+  },
   render: () => (
     <>
       <input type="text" />
