@@ -1,0 +1,27 @@
+.form-builder {
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &-element {
+      width: 90%;
+      height: 100px;
+      border: 2px lightgray dashed;
+      margin-bottom: 30px;
+      position: relative;
+
+      &__clear {
+        background-color: white;
+        color: red;
+        height: 2em;
+        width: 2em;
+        border-radius: 50%;
+        stroke-width: 0.2;
+        position: absolute;
+        right: 50%;
+        top: -16px;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
 export const TextInput = {
   title: 'Text input',
-  name: 'title',
+  name: 'input',
   description: 'Allows to write text.',
   icon: <LuTextCursorInput style={iconStyles} />,
   color: '#990066',
@@ -26,7 +26,7 @@ export const TextInput = {
   },
   render: () => (
     <>
-      <input type="text" />
+      <input type="text" className="form-builder__form-input" />
     </>
   ),
 };
@@ -39,13 +39,13 @@ export const SelectElement = {
   color: 'orange',
 
   settings: {
-    options: [],
+    options: ['Option 1', 'Option 2'],
   },
 
   render: function () {
     return (
       <>
-        <select name="" id="">
+        <select className="form-builder__form-select" name="" id="">
           {this.settings.options.length > 0 &&
             this.settings.options.map((option: any) => <option value={option}>{option}</option>)}
         </select>

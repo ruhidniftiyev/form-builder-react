@@ -1,39 +1,36 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { SelectElement, TextInput } from '../../components/FormElements';
 import { IFormElement } from '../../models/IFormElement';
 
 interface IFormState {
-  builderElements: any[];
   content: IFormElement[];
 }
 
 const initialState: IFormState = {
-  builderElements: [TextInput, SelectElement],
   content: [
-    {
-      id: 1,
-      element: 'input',
-      settings: {
-        type: 'text',
-        placeholder: 'Your name',
-      },
-    },
-    {
-      id: 2,
-      element: 'input',
-      settings: {
-        type: 'text',
-        placeholder: 'Your surname',
-      },
-    },
-    {
-      id: 3,
-      element: 'input',
-      settings: {
-        type: 'number',
-        placeholder: 'Your age',
-      },
-    },
+    // {
+    //   id: 1,
+    //   element: 'input',
+    //   settings: {
+    //     type: 'text',
+    //     placeholder: 'Your name',
+    //   },
+    // },
+    // {
+    //   id: 2,
+    //   element: 'input',
+    //   settings: {
+    //     type: 'text',
+    //     placeholder: 'Your surname',
+    //   },
+    // },
+    // {
+    //   id: 3,
+    //   element: 'input',
+    //   settings: {
+    //     type: 'number',
+    //     placeholder: 'Your age',
+    //   },
+    // },
   ],
 };
 
@@ -49,4 +46,4 @@ const formSlice = createSlice({
 
 export default formSlice.reducer;
 
-export const {addElementToContent} = formSlice.actions;
+export const { addElementToContent } = formSlice.actions;

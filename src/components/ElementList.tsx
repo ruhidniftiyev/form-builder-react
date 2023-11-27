@@ -3,11 +3,12 @@ import ElementItem from './ElementItem';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent } from '../store/slices/FormSlice';
+import { SelectElement, TextInput } from './FormElements';
 
 type Props = {};
 
 const ElementList = (props: Props) => {
-  const builderElements = useAppSelector((store) => store.formSlice.builderElements);
+  const builderElements = [TextInput, SelectElement];
 
   const dispatch = useAppDispatch();
 
@@ -18,7 +19,7 @@ const ElementList = (props: Props) => {
         {builderElements.map((el: any) => (
           <ElementItem
             onClick={() =>
-              dispatch(addElementToContent({ id: 6, element: el.title, settings: el.settings }))
+              dispatch(addElementToContent({ id: 6, element: el.name, settings: el.settings }))
             }
             {...el}
             key={el.title}
