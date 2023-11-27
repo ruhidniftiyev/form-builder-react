@@ -1,6 +1,4 @@
 import { IFormElement } from '../models/IFormElement';
-import { v4 as uuid4 } from 'uuid';
-
 interface IFormBuilderProporties {
   extensions: any;
   content: IFormElement[];
