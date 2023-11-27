@@ -1,14 +1,18 @@
 import React, { FC } from 'react';
 
 type Props = {
-  form: any;
+  forma: any;
 };
 
-const FormBuilder: FC<Props> = ({ form }) => {
+const FormBuilder: FC<Props> = ({ forma}) => {
   return (
     <div className='form-builder'>
       <form className='form-builder__form'>
-        
+        {
+          forma.elements.map((el: any) => (
+            el.render()
+          ))
+        }
       </form>
     </div>
   );

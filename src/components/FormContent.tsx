@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FormBuilder from './FormBuilder';
+import { SelectElement, TextInput } from './FormElements';
 
 type Props = {};
 
@@ -27,9 +29,14 @@ const FormContent = (props: Props) => {
     },
   ]);
 
+  const [form, setForm] = useState<any>({
+    elements: [TextInput, SelectElement],
+  });
+
   return (
     <div className="form-content">
       <p className="form-content__title">FORM</p>
+      <FormBuilder forma={form} />
     </div>
   );
 };
