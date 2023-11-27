@@ -1,5 +1,5 @@
 export interface IFormElement {
-  id: string | number;
+  id?: string;
   element: string;
   settings: any;
 }

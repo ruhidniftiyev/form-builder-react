@@ -4,6 +4,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent } from '../store/slices/FormSlice';
 import { SelectElement, TextInput } from './FormElements';
+import { v4 as uuid4 } from 'uuid';
 
 type Props = {};
 
@@ -19,7 +20,9 @@ const ElementList = (props: Props) => {
         {builderElements.map((el: any) => (
           <ElementItem
             onClick={() =>
-              dispatch(addElementToContent({ id: 6, element: el.name, settings: el.settings }))
+              dispatch(
+                addElementToContent({ id: uuid4(), element: el.name, settings: el.settings }),
+              )
             }
             {...el}
             key={el.title}

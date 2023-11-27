@@ -42,8 +42,7 @@ const formSlice = createSlice({
       state.content = [...state.content, action.payload];
     },
     removeElementFromContent: (state, action: PayloadAction<string>) => {
-      state.content = state.content.filter(
-        (formElement: IFormElement) => formElement.id !== action.payload,
+      state.content = state.content.filter((formElement: IFormElement) => formElement.id !== action.payload,
       );
     },
   },
