@@ -29,7 +29,7 @@ const FormContent = (props: Props) => {
 
   return (
     <div className="form-content">
-      <p className="form-content">FORM</p>
+      <p className="form-content__title">FORM</p>
     </div>
   );
 };
