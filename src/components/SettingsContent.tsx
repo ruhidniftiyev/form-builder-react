@@ -27,9 +27,9 @@ const SettingsContent = (props: Props) => {
 
   return (
     <div className="settings-content">
-      <form>
+      <form className="settings-content__form">
         {form.map((el: any) => {
-          return el.id === selectedElement && el.renderSettings(handleInputChange);
+          return el.id === selectedElement && el.renderSettings(el.settings, handleInputChange);
         })}
       </form>
     </div>

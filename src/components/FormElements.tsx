@@ -18,12 +18,14 @@ export const TextInput = {
     placeholder: '',
   },
 
-  renderSettings: function (handleInputChange: (newPlaceholder: any) => void) {
+  renderSettings: function (settings: any, handleInputChange: (newPlaceholder: any) => void) {
     return (
       <>
+        <label htmlFor={settings.placeholder}>Placeholder</label>
         <input
+          value={settings.placeholder}
           onChange={(e) => {
-            const newPlaceholder = {...this.settings, placeholder: e.target.value };
+            const newPlaceholder = { ...settings, placeholder: e.target.value };
             handleInputChange(newPlaceholder);
           }}
         />
