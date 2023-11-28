@@ -1,5 +1,6 @@
 import { LuTextCursorInput } from 'react-icons/lu';
 import { MdOutlinePlaylistAddCheck } from 'react-icons/md';
+import { useAppDispatch } from '../hooks/useAppDispatch';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
@@ -15,12 +16,14 @@ export const TextInput = {
     placeholder: '',
   },
 
-  renderSettings: function (text: string) {
+  renderSettings: function (dispatcher: any) {
     return (
       <>
         <input
-          value={this.settings.placeholder}
-          onChange={(e) => (this.settings.placeholder = e.target.value)}
+          placeholder={this.settings.placeholder}
+          onChange={(e) => {
+            this.settings = { ...this.settings, placeholder: e.target.value };
+          }}
         />
       </>
     );

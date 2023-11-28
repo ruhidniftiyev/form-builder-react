@@ -48,6 +48,11 @@ const formSlice = createSlice({
         (formElement: IFormElement) => formElement.id !== action.payload,
       );
     },
+    editElementInContent: (state, action: PayloadAction<any>) => {
+      state.content = state.content.map((el: any) =>
+        el.id === state.selectedElementId ? { ...el, settings: action.payload } : el,
+      );
+    },
     isSelected: (state, action: PayloadAction<string>) => {
       state.selectedElementId = action.payload;
     },
@@ -56,4 +61,5 @@ const formSlice = createSlice({
 
 export default formSlice.reducer;
 
-export const { addElementToContent, removeElementFromContent, isSelected } = formSlice.actions;
+export const { addElementToContent, removeElementFromContent, editElementInContent, isSelected } =
+  formSlice.actions;
