@@ -1,0 +1,42 @@
+.element-item {
+  min-width: 50%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  flex-direction: column;
+  cursor: move;
+
+  &:nth-child(odd) {
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &:nth-child(even) {
+    border-bottom: 1px solid lightgray;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 60px;
+    border-radius: 50%/10%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8%;
+      bottom: 8%;
+      right: -10%;
+      left: -10%;
+      background: inherit;
+      border-radius: 10%/50%;
+      z-index: -1;
+    }
+  }
+}

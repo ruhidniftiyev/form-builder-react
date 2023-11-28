@@ -1,0 +1,16 @@
+.form-settings {
+  width: 20%;
+  height: 90vh;
+  background-color: white;
+
+  &__title {
+    height: 60px;
+    font-weight: 700;
+    font-size: 14px;
+    color: darkgray;
+    border-bottom: 2px solid lightgray;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+}

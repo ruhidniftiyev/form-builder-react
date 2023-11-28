@@ -1,0 +1,13 @@
+@import './components/all';
+@import './libs/normalize';
+
+.container {
+  background-color:rgb(241, 240, 240);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+  align-items: center;
+  z-index: -10;
+}
