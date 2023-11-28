@@ -6,6 +6,7 @@
   align-items: center;
   padding: 15px;
   flex-direction: column;
+  cursor: move;
 
   &:nth-child(odd) {
     border-right: 1px solid lightgray;
