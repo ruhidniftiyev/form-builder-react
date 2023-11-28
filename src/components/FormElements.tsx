@@ -18,15 +18,28 @@ export const TextInput = {
     placeholder: '',
   },
 
-  renderSettings: function (settings: any, handleInputChange: (newPlaceholder: any) => void) {
+  renderSettings: function (settings: any, handleInputChange: (newSettings: any) => void) {
     return (
       <>
+        <label htmlFor={settings.label}>Label</label>
+        <input
+          type="text"
+          placeholder={settings.label}
+          className="settings-content__form-input"
+          onChange={(e) => {
+            const newSettings = { ...settings, label: e.target.value || 'Text input' };
+            handleInputChange(newSettings);
+          }}
+        />
         <label htmlFor={settings.placeholder}>Placeholder</label>
         <input
+          type="text"
+          placeholder="Max 100 symbol"
+          className="settings-content__form-input"
           value={settings.placeholder}
           onChange={(e) => {
-            const newPlaceholder = { ...settings, placeholder: e.target.value };
-            handleInputChange(newPlaceholder);
+            const newSettings = { ...settings, placeholder: e.target.value };
+            handleInputChange(newSettings);
           }}
         />
       </>
