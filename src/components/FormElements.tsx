@@ -43,12 +43,26 @@ export const SelectElement = {
   color: 'orange',
 
   settings: {
+    label: 'Select',
     options: ['Option 1', 'Option 2'],
+  },
+
+  renderSettings: function () {
+    return (
+      <>
+        <input
+          placeholder="Select"
+          value={this.settings.label}
+          onChange={(e) => (this.settings.label = e.target.value)}
+        />
+      </>
+    );
   },
 
   render: function () {
     return (
       <>
+        <label htmlFor="">{this.settings.label}</label>
         <select className="form-builder__form-element__select" name="" id="">
           {this.settings.options.length > 0 &&
             this.settings.options.map((option: any) => <option value={option}>{option}</option>)}

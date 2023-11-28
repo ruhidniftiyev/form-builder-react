@@ -1,18 +1,17 @@
-import React from 'react'
+import React from 'react';
+import SettingsContent from './SettingsContent';
 
-type Props = {}
+type Props = {};
 
 const FormSettings = (props: Props) => {
   return (
-      <div className='form-settings'>
-          <p>SETTINGS</p>
-          <div>
-              {
-                  
-              }
-          </div>
+    <div className="form-settings">
+      <p className="form-settings__title">SETTINGS</p>
+      <div>
+        <SettingsContent />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormSettings
+export default FormSettings;

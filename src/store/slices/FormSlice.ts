@@ -2,10 +2,12 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IFormElement } from '../../models/IFormElement';
 
 interface IFormState {
+  selectedElementId: string;
   content: IFormElement[];
 }
 
 const initialState: IFormState = {
+  selectedElementId: '',
   content: [
     // {
     //   id: 1,
@@ -42,12 +44,16 @@ const formSlice = createSlice({
       state.content = [...state.content, action.payload];
     },
     removeElementFromContent: (state, action: PayloadAction<string>) => {
-      state.content = state.content.filter((formElement: IFormElement) => formElement.id !== action.payload,
+      state.content = state.content.filter(
+        (formElement: IFormElement) => formElement.id !== action.payload,
       );
+    },
+    isSelected: (state, action: PayloadAction<string>) => {
+      state.selectedElementId = action.payload;
     },
   },
 });
 
 export default formSlice.reducer;
 
-export const { addElementToContent, removeElementFromContent } = formSlice.actions;
+export const { addElementToContent, removeElementFromContent, isSelected } = formSlice.actions;

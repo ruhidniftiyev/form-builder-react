@@ -35,7 +35,7 @@
     &-element {
       width: 97%;
       height: 120px;
-      border: 2px lightgray dashed;
+      border: none;
       margin-bottom: 30px;
       position: relative;
       display: flex;
@@ -63,10 +63,26 @@
       &__input {
         height: 50px;
         border: 1px solid lightgray;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         padding: 10px;
       }
+
+      &__select {
+        height: 50px;
+        border: 1px solid lightgray;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px;
+
+        option {
+          height: 50px !important;
+        }
+      }
     }
   }
+}
+
+.selected {
+  border: 2px lightgray dashed;
 }
