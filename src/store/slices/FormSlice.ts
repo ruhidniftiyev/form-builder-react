@@ -2,38 +2,13 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IFormElement } from '../../models/IFormElement';
 
 interface IFormState {
-  selectedElementId: string;
+  selectedElementId: string | undefined;
   content: IFormElement[];
 }
 
 const initialState: IFormState = {
   selectedElementId: '',
-  content: [
-    // {
-    //   id: 1,
-    //   element: 'input',
-    //   settings: {
-    //     type: 'text',
-    //     placeholder: 'Your name',
-    //   },
-    // },
-    // {
-    //   id: 2,
-    //   element: 'input',
-    //   settings: {
-    //     type: 'text',
-    //     placeholder: 'Your surname',
-    //   },
-    // },
-    // {
-    //   id: 3,
-    //   element: 'input',
-    //   settings: {
-    //     type: 'number',
-    //     placeholder: 'Your age',
-    //   },
-    // },
-  ],
+  content: [],
 };
 
 const formSlice = createSlice({
@@ -44,9 +19,13 @@ const formSlice = createSlice({
       state.content = [...state.content, action.payload];
     },
     removeElementFromContent: (state, action: PayloadAction<string>) => {
+      console.log([...state.content]);
       state.content = state.content.filter(
         (formElement: IFormElement) => formElement.id !== action.payload,
       );
+      if (action.payload === state.selectedElementId) {
+        state.selectedElementId = state.content[state.content.length-1].id;
+      }
     },
     editElementInContent: (state, action: PayloadAction<any>) => {
       state.content = state.content.map((el: any) =>

@@ -50,7 +50,10 @@ const FormBuilder: FC<Props> = ({ form }) => {
               {el.render()}
               {selectedElId === el.id && (
                 <TiDelete
-                  onClick={() => removeFormElementAction(el.id)}
+                  onClick={(e: any) => {
+                    e.stopPropagation();
+                    removeFormElementAction(el.id);
+                  }}
                   className="form-builder__form-element__clear"
                 />
               )}
