@@ -18,7 +18,7 @@ const FormContent = (props: Props) => {
   return (
     <div className="form-content">
       <p className="form-content__title">FORM</p>
-      {form.length > 0 && <FormBuilder form={form} />}
+      {<FormBuilder form={form} />}
     </div>
   );
 };

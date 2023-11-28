@@ -11,7 +11,8 @@ export const TextInput = {
   color: '#990066',
 
   settings: {
-    placeholder: 'Text input',
+    label: 'Text input',
+    placeholder: '',
   },
 
   renderSettings: function (text: string) {
@@ -24,11 +25,14 @@ export const TextInput = {
       </>
     );
   },
-  render: () => (
-    <>
-      <input type="text" className="form-builder__form-input" />
-    </>
-  ),
+  render: function () {
+    return (
+      <>
+        <label htmlFor={this.settings.label}>{this.settings.label}</label>
+        <input type="text" className="form-builder__form-element__input" />
+      </>
+    );
+  },
 };
 
 export const SelectElement = {
@@ -45,7 +49,7 @@ export const SelectElement = {
   render: function () {
     return (
       <>
-        <select className="form-builder__form-select" name="" id="">
+        <select className="form-builder__form-element__select" name="" id="">
           {this.settings.options.length > 0 &&
             this.settings.options.map((option: any) => <option value={option}>{option}</option>)}
         </select>

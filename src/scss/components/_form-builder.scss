@@ -1,14 +1,47 @@
 .form-builder {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 90%;
+  padding: 15px 10px 0 20px;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #fff;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 
     &-element {
-      width: 90%;
-      height: 100px;
+      width: 97%;
+      height: 120px;
       border: 2px lightgray dashed;
       margin-bottom: 30px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      justify-content: space-around;
 
       &__clear {
         background-color: white;
@@ -21,6 +54,18 @@
         right: 50%;
         top: -16px;
         cursor: pointer;
+      }
+
+      label {
+        font-weight: 500;
+      }
+
+      &__input {
+        height: 50px;
+        border: 1px solid lightgray;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 10px;
       }
     }
   }
