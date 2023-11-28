@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './pages/Home';
-import './scss/app.scss'
+import './scss/app.scss';
+import { TextInput } from './components/FormElements';
 
 function App() {
   return (

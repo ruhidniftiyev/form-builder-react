@@ -1,6 +1,8 @@
 import { LuTextCursorInput } from 'react-icons/lu';
 import { MdOutlinePlaylistAddCheck } from 'react-icons/md';
 import { useAppDispatch } from '../hooks/useAppDispatch';
+import { editElementInContent } from '../store/slices/FormSlice';
+import React from 'react';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
@@ -16,13 +18,13 @@ export const TextInput = {
     placeholder: '',
   },
 
-  renderSettings: function (dispatcher: any) {
+  renderSettings: function (handleInputChange: (newPlaceholder: any) => void) {
     return (
       <>
         <input
-          placeholder={this.settings.placeholder}
           onChange={(e) => {
-            this.settings = { ...this.settings, placeholder: e.target.value };
+            const newPlaceholder = {...this.settings, placeholder: e.target.value };
+            handleInputChange(newPlaceholder);
           }}
         />
       </>
@@ -32,7 +34,11 @@ export const TextInput = {
     return (
       <>
         <label htmlFor={this.settings.label}>{this.settings.label}</label>
-        <input type="text" className="form-builder__form-element__input" />
+        <input
+          placeholder={this.settings.placeholder}
+          type="text"
+          className="form-builder__form-element__input"
+        />
       </>
     );
   },

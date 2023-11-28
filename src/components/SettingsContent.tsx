@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectElement, TextInput } from './FormElements';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useFormBuilder } from '../hooks/useFormBuilder';
@@ -20,9 +20,18 @@ const SettingsContent = (props: Props) => {
     content,
   });
 
+  const handleInputChange = (newPlaceholder: any) => {
+    console.log('Изменение в TextInput:', newPlaceholder);
+    dispatch(editElementInContent(newPlaceholder));
+  };
+
   return (
     <div className="settings-content">
-      <form>{form.map((el: any) => el.id === selectedElement && el.renderSettings())}</form>
+      <form>
+        {form.map((el: any) => {
+          return el.id === selectedElement && el.renderSettings(handleInputChange);
+        })}
+      </form>
     </div>
   );
 };

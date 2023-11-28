@@ -7,7 +7,7 @@ interface IFormBuilderProporties {
 export const useFormBuilder = ({ extensions, content }: IFormBuilderProporties): any[] => {
   const formCustomExtensions = content.map((el: any) => {
     return extensions.some((extension: any) => extension.name === el.element)
-      ? { ...extensions.find((e: any) => e.name === el.element), id: el.id }
+      ? { ...extensions.find((e: any) => e.name === el.element), id: el.id, settings: el.settings }
       : null;
   });
 
