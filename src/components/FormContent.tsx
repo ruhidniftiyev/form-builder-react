@@ -4,9 +4,8 @@ import { SelectElement, TextInput } from './FormElements';
 import { useFormBuilder } from '../hooks/useFormBuilder';
 import { useAppSelector } from '../hooks/useAppSelector';
 
-type Props = {};
 
-const FormContent = (props: Props) => {
+const FormContent = () => {
   const content = useAppSelector((store) => store.formSlice.content);
   const builderElements = [TextInput, SelectElement];
 

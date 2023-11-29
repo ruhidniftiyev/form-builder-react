@@ -3,6 +3,12 @@ import { MdOutlinePlaylistAddCheck } from 'react-icons/md';
 import { IoIosAddCircle } from 'react-icons/io';
 import { v4 as uuid4 } from 'uuid';
 import { TiDelete } from 'react-icons/ti';
+import {
+  IInputSettings,
+  ISelectOption,
+  ISelectSettings,
+  SettingsType,
+} from '../models/IFormElement';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
@@ -18,7 +24,10 @@ export const TextInput = {
     placeholder: '',
   },
 
-  renderSettings: function (settings: any, handleInputChange: (newSettings: any) => void) {
+  renderSettings: function (
+    settings: IInputSettings,
+    handleInputChange: (newSettings: IInputSettings) => void,
+  ): React.ReactElement {
     return (
       <>
         <label htmlFor={settings.label}>Label</label>
@@ -27,7 +36,7 @@ export const TextInput = {
           placeholder={settings.label}
           value={settings.label}
           className="settings-content__form-input"
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const newSettings = { ...settings, label: e.target.value };
             handleInputChange(newSettings);
           }}
@@ -38,7 +47,7 @@ export const TextInput = {
           placeholder="Max 100 symbol"
           className="settings-content__form-input"
           value={settings.placeholder}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const newSettings = { ...settings, placeholder: e.target.value };
             handleInputChange(newSettings);
           }}
@@ -72,7 +81,10 @@ export const SelectElement = {
     options: [],
   },
 
-  renderSettings: function (settings: any, handleSelectChange: (newSettings: any) => void) {
+  renderSettings: function (
+    settings: ISelectSettings,
+    handleSelectChange: (newSettings: ISelectSettings) => void,
+  ) {
     return (
       <>
         <label htmlFor={settings.label}>Label</label>
@@ -85,16 +97,16 @@ export const SelectElement = {
             handleSelectChange(newSettings);
           }}
         />
-        <label htmlFor={settings.options}>Choices</label>
-        {settings.options.map((item: { id: string; option: string }) => (
+        <label htmlFor={settings.label}>Choices</label>
+        {settings.options?.map((item: ISelectOption) => (
           <div className="settings-content__form-select__option">
             <input
               className="settings-content__form-select__option-input"
               key={item.id}
               type="text"
               value={item.option}
-              onChange={(e) => {
-                const updatedOptions = settings.options.map((el: any) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const updatedOptions = settings.options?.map((el: ISelectOption) =>
                   el.id === item.id ? { ...el, option: e.target.value } : el,
                 );
                 const newSettings = {
@@ -105,10 +117,10 @@ export const SelectElement = {
               }}
             />
             <TiDelete
-              onClick={(e: any) => {
+              onClick={() => {
                 const newSettings = {
                   ...settings,
-                  options: settings.options.filter((el: any) => el.id !== item.id),
+                  options: settings.options?.filter((el: ISelectOption) => el.id !== item.id),
                 };
                 handleSelectChange(newSettings);
               }}
@@ -117,10 +129,10 @@ export const SelectElement = {
           </div>
         ))}
         <button
-          onClick={(e) => {
+          onClick={() => {
             const newSettings = {
               ...settings,
-              options: [...settings.options, { id: uuid4(), option: '' }],
+              options: settings.options && [...settings.options, { id: uuid4(), option: '' }],
             };
             handleSelectChange(newSettings);
           }}

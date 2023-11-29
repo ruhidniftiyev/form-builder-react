@@ -1,20 +1,22 @@
 export interface IFormElement {
   id?: string;
   element: string;
-  settings: any;
+  settings: IInputSettings | ISelectSettings;
 }
+
+export type SettingsType = IInputSettings | ISelectSettings;
 
 export interface IInputSettings {
   label: string;
-  placeholder: string;
+  placeholder?: string;
 }
 
-interface ISelectOption {
+export interface ISelectOption {
   id: string;
   option: string;
 }
 
 export interface ISelectSettings {
   label: string;
-  options: ISelectOption[];
+  options?: ISelectOption[];
 }

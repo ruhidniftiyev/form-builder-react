@@ -1,9 +1,7 @@
-import { IInputSettings, ISelectSettings } from './IFormElement';
-
-type SettingsType = IInputSettings | ISelectSettings;
+import { SettingsType } from './IFormElement';
 
 export interface IBuilderElement {
-  id?: string;
+  id?: any;
   title: string;
   name: string;
   description: string;

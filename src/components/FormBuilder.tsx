@@ -18,7 +18,7 @@ type FormBuilderProps = {
 
 const FormBuilder: FC<FormBuilderProps> = ({ form }) => {
   const dispatch = useAppDispatch();
-  
+
   const [, drop] = useDrop({
     accept: 'element',
     drop: (item: IFormElement) => {
