@@ -2,10 +2,15 @@ import React from 'react';
 import ElementItem from './ElementItem';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent, isSelected } from '../store/slices/FormSlice';
-import { CheckBoxElement, RadioButtonsElement, SelectElement, TextInput } from './FormElements';
+import {
+  CheckBoxElement,
+  RadioButtonsElement,
+  SelectElement,
+  TextAreaElement,
+  TextInput,
+} from './FormElements';
 import { v4 as uuid4 } from 'uuid';
 import { IBuilderElement } from '../models/IBuildingElements';
-import { IFormElement } from '../models/IFormElement';
 
 const ElementList = () => {
   const dispatch = useAppDispatch();
@@ -14,8 +19,8 @@ const ElementList = () => {
     TextInput,
     SelectElement,
     CheckBoxElement,
-    RadioButtonsElement
-    // SelectElement,
+    RadioButtonsElement,
+    TextAreaElement,
   ];
 
   const addElementToContentAction = (element: IBuilderElement) => {

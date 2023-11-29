@@ -5,6 +5,7 @@ import {
   IInputSettings,
   IRadioButtonsSettings,
   ISelectSettings,
+  ITextAreaSettings,
 } from '../models/IFormElement';
 
 type ElementItemsProps = {
@@ -12,7 +13,7 @@ type ElementItemsProps = {
   icon: string | undefined;
   color: string;
   title: string;
-  settings: IInputSettings | ISelectSettings | ICheckBoxSettings | IRadioButtonsSettings;
+  settings: IInputSettings | ISelectSettings | ICheckBoxSettings | IRadioButtonsSettings | ITextAreaSettings;
   onClick: () => void;
 };
 

@@ -13,6 +13,7 @@ import {
   ICheckBoxSettings,
   IRadioButtonsSettings,
   IRadioChoices,
+  ITextAreaSettings,
 } from '../models/IFormElement';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
@@ -322,16 +323,16 @@ export const TextAreaElement = {
   name: 'textarea',
   description: 'Allows to write text.',
   icon: <BsTextareaResize style={iconStyles} />,
-  color: '#990066',
+  color: 'gold',
 
   settings: {
     label: 'Text area',
-    placeholder: 'gold',
+    text: '',
   },
 
   renderSettings: function (
-    settings: IInputSettings,
-    handleInputChange: (newSettings: IInputSettings) => void,
+    settings: ITextAreaSettings,
+    handleTextAreaChange: (newSettings: ITextAreaSettings) => void,
   ): React.ReactElement {
     return (
       <>
@@ -343,18 +344,18 @@ export const TextAreaElement = {
           className="settings-content__form-input"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const newSettings = { ...settings, label: e.target.value };
-            handleInputChange(newSettings);
+            handleTextAreaChange(newSettings);
           }}
         />
-        <label htmlFor={settings.placeholder}>Placeholder</label>
+        <label htmlFor={settings.text}>Text</label>
         <input
           type="text"
-          placeholder="Max 100 symbol"
+          placeholder="Max 200 symbol"
           className="settings-content__form-input"
-          value={settings.placeholder}
+          value={settings.text}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const newSettings = { ...settings, placeholder: e.target.value };
-            handleInputChange(newSettings);
+            const newSettings = { ...settings, text: e.target.value };
+            handleTextAreaChange(newSettings);
           }}
         />
       </>
@@ -364,10 +365,7 @@ export const TextAreaElement = {
     return (
       <>
         <label htmlFor={this.settings.label}>{this.settings.label}</label>
-        <textarea
-          placeholder={this.settings.placeholder}
-          className="form-builder__form-element__textarea"
-        />
+        <textarea className="form-builder__form-element__textarea">{this.settings.text}</textarea>
       </>
     );
   },

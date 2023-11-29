@@ -1,14 +1,20 @@
 export interface IFormElement {
   id?: string;
   element: string;
-  settings: IInputSettings | ISelectSettings | ICheckBoxSettings | IRadioButtonsSettings;
+  settings:
+    | IInputSettings
+    | ISelectSettings
+    | ICheckBoxSettings
+    | IRadioButtonsSettings
+    | ITextAreaSettings;
 }
 
 export type SettingsType =
   | IInputSettings
   | ISelectSettings
   | ICheckBoxSettings
-  | IRadioButtonsSettings;
+  | IRadioButtonsSettings
+  | ITextAreaSettings;
 
 export interface IInputSettings {
   label: string;
@@ -38,4 +44,9 @@ export interface IRadioChoices {
 export interface IRadioButtonsSettings {
   label: string;
   choices?: IRadioChoices[];
+}
+
+export interface ITextAreaSettings {
+  label: string;
+  text?: string;
 }

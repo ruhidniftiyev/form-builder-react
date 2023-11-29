@@ -1,6 +1,17 @@
-import { ICheckBoxSettings, IInputSettings, ISelectSettings } from './IFormElement';
+import {
+  ICheckBoxSettings,
+  IInputSettings,
+  IRadioButtonsSettings,
+  ISelectSettings,
+  ITextAreaSettings,
+} from './IFormElement';
 
-type SettingsType = IInputSettings | ISelectSettings | ICheckBoxSettings;
+type SettingsType =
+  | IInputSettings
+  | ISelectSettings
+  | ICheckBoxSettings
+  | IRadioButtonsSettings
+  | ITextAreaSettings;
 
 export interface IBuilderElement {
   id?: any;
