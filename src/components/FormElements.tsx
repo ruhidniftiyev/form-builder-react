@@ -105,7 +105,7 @@ export const SelectElement = {
               }}
             />
             <TiDelete
-              onClick={(e) => {
+              onClick={(e: any) => {
                 const newSettings = {
                   ...settings,
                   options: settings.options.filter((el: any) => el.id !== item.id),
