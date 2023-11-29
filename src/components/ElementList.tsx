@@ -2,29 +2,29 @@ import React from 'react';
 import ElementItem from './ElementItem';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent, isSelected } from '../store/slices/FormSlice';
-import { SelectElement, TextInput } from './FormElements';
+import { builderElements } from './FormElements';
 import { v4 as uuid4 } from 'uuid';
+import { IBuilderElement } from '../models/IBuildingElements';
 
-type Props = {};
-
-const ElementList = (props: Props) => {
-  const builderElements = [TextInput, SelectElement];
-
+const ElementList = () => {
   const dispatch = useAppDispatch();
+
+  const addElementToContentAction = (element: IBuilderElement) => {
+    let id = uuid4();
+    let newElement = { id, element: element.name, settings: element.settings };
+    dispatch(addElementToContent(newElement));
+    dispatch(isSelected(id));
+  };
 
   return (
     <div className="elements">
       <p className="elements__title">ELEMENTS</p>
       <div className="elements__list">
-        {builderElements.map((el: any) => (
+        {builderElements.map((element: IBuilderElement) => (
           <ElementItem
-            onClick={() => {
-              let id = uuid4();
-              dispatch(addElementToContent({ id, element: el.name, settings: el.settings }));
-              dispatch(isSelected(id));
-            }}
-            {...el}
-            key={el.title}
+            onClick={() => addElementToContentAction(element)}
+            {...element}
+            key={element.name}
           />
         ))}
       </div>

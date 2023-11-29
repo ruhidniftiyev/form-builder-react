@@ -3,9 +3,7 @@ import ElementList from '../components/ElementList';
 import FormSettings from '../components/FormSettings';
 import FormContent from '../components/FormContent';
 
-type Props = {};
-
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <div className="home">
       <ElementList />

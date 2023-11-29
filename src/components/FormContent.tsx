@@ -1,14 +1,11 @@
 import React from 'react';
 import FormBuilder from './FormBuilder';
-import { SelectElement, TextInput } from './FormElements';
+import { builderElements } from './FormElements';
 import { useFormBuilder } from '../hooks/useFormBuilder';
 import { useAppSelector } from '../hooks/useAppSelector';
 
-type Props = {};
-
-const FormContent = (props: Props) => {
+const FormContent = () => {
   const content = useAppSelector((store) => store.formSlice.content);
-  const builderElements = [TextInput, SelectElement];
 
   const form = useFormBuilder({
     extensions: builderElements,
