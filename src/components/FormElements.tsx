@@ -11,6 +11,8 @@ import {
   ISelectOption,
   ISelectSettings,
   ICheckBoxSettings,
+  IRadioButtonsSettings,
+  IRadioChoices,
 } from '../models/IFormElement';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
@@ -231,8 +233,105 @@ export const RadioButtonsElement = {
   },
 
   renderSettings: function (
-    settings: ICheckBoxSettings,
-    handleInputChange: (newSettings: ICheckBoxSettings) => void,
+    settings: IRadioButtonsSettings,
+    handleRadioChange: (newSettings: IRadioButtonsSettings) => void,
+  ): React.ReactElement {
+    return (
+      <>
+        <label htmlFor={settings.label}>Label</label>
+        <input
+          type="text"
+          placeholder={settings.label}
+          value={settings.label}
+          className="settings-content__form-input"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const newSettings = { ...settings, label: e.target.value };
+            handleRadioChange(newSettings);
+          }}
+        />
+        <label htmlFor={settings.label}>Choices</label>
+        {settings.choices?.map((item: IRadioChoices) => (
+          <div className="settings-content__form-select__option">
+            <input
+              className="settings-content__form-select__option-input"
+              key={item.id}
+              type="text"
+              value={item.choice}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const updateChoices = settings.choices?.map((el: IRadioChoices) =>
+                  el.id === item.id ? { ...el, choice: e.target.value } : el,
+                );
+                const newSettings = {
+                  ...settings,
+                  choices: updateChoices,
+                };
+                handleRadioChange(newSettings);
+              }}
+            />
+            <TiDelete
+              onClick={() => {
+                const newSettings = {
+                  ...settings,
+                  choices: settings.choices?.filter((el: IRadioChoices) => el.id !== item.id),
+                };
+                handleRadioChange(newSettings);
+              }}
+              className="settings-content__form-select__option-delete"
+            />
+          </div>
+        ))}
+        <button
+          onClick={() => {
+            const newSettings = {
+              ...settings,
+              choices: settings.choices && [...settings.choices, { id: uuid4(), choice: '' }],
+            };
+            handleRadioChange(newSettings);
+          }}
+          className="settings-content__form-select__addBtn">
+          <IoIosAddCircle className="settings-content__form-select__addIcon" />
+          Add new
+        </button>
+      </>
+    );
+  },
+  render: function () {
+    return (
+      <>
+        <label htmlFor={this.settings.label}>{this.settings.label}</label>
+        <div className="form-builder__form-element-radio">
+          {this.settings.choices?.map((choiceElement: IRadioChoices) => (
+            <div className="form-builder__form-element-radio__block">
+              <input
+                type="radio"
+                value={choiceElement.choice}
+                name={this.settings.label}
+                className="form-builder__form-element-radio__block-input"
+              />
+              <label htmlFor={choiceElement.choice}>{choiceElement.choice}</label>
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  },
+};
+
+export const TextAreaElement = {
+  title: 'Textarea',
+  name: 'textarea',
+  description: 'Allows to write text.',
+  icon: <BsTextareaResize style={iconStyles} />,
+  color: '#990066',
+
+  settings: {
+    label: 'Text area',
+    placeholder: 'gold',
+  },
+
+  renderSettings: function (
+    settings: IInputSettings,
+    handleInputChange: (newSettings: IInputSettings) => void,
   ): React.ReactElement {
     return (
       <>
@@ -247,14 +346,14 @@ export const RadioButtonsElement = {
             handleInputChange(newSettings);
           }}
         />
-        <label htmlFor={settings.value}>Value</label>
+        <label htmlFor={settings.placeholder}>Placeholder</label>
         <input
           type="text"
-          placeholder="value"
+          placeholder="Max 100 symbol"
           className="settings-content__form-input"
-          value={settings.value}
+          value={settings.placeholder}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const newSettings = { ...settings, value: e.target.value };
+            const newSettings = { ...settings, placeholder: e.target.value };
             handleInputChange(newSettings);
           }}
         />
@@ -263,15 +362,13 @@ export const RadioButtonsElement = {
   },
   render: function () {
     return (
-      <fieldset>
+      <>
         <label htmlFor={this.settings.label}>{this.settings.label}</label>
-        {this.settings.choices?.map((choise) => (
-          <>
-            <input type="radio" value={choise} className="form-builder__form-element-radio" />
-            <label htmlFor={choise}>{choise}</label>
-          </>
-        ))}
-      </fieldset>
+        <textarea
+          placeholder={this.settings.placeholder}
+          className="form-builder__form-element__textarea"
+        />
+      </>
     );
   },
 };

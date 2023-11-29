@@ -1,13 +1,18 @@
 import React, { FC } from 'react';
 import { useDrag } from 'react-dnd';
-import { ICheckBoxSettings, IInputSettings, ISelectSettings } from '../models/IFormElement';
+import {
+  ICheckBoxSettings,
+  IInputSettings,
+  IRadioButtonsSettings,
+  ISelectSettings,
+} from '../models/IFormElement';
 
 type ElementItemsProps = {
   name: string;
   icon: string | undefined;
   color: string;
   title: string;
-  settings: IInputSettings | ISelectSettings | ICheckBoxSettings;
+  settings: IInputSettings | ISelectSettings | ICheckBoxSettings | IRadioButtonsSettings;
   onClick: () => void;
 };
 
