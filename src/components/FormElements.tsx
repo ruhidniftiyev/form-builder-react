@@ -18,7 +18,7 @@ import {
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
-export const TextInput = {
+const TextInput = {
   title: 'Text input',
   name: 'input',
   description: 'Allows to write text.',
@@ -75,7 +75,7 @@ export const TextInput = {
   },
 };
 
-export const SelectElement = {
+const SelectElement = {
   title: 'Select',
   name: 'select',
   description: 'Allows to choose from multiple options.',
@@ -165,7 +165,7 @@ export const SelectElement = {
   },
 };
 
-export const CheckBoxElement = {
+const CheckBoxElement = {
   title: 'Checkbox',
   name: 'checkbox',
   description: 'Allows to check...',
@@ -174,7 +174,7 @@ export const CheckBoxElement = {
 
   settings: {
     label: 'Checkbox',
-    value: '',
+    value: 'Check',
   },
 
   renderSettings: function (
@@ -230,7 +230,16 @@ export const RadioButtonsElement = {
 
   settings: {
     label: 'Radio buttons',
-    choices: [],
+    choices: [
+      {
+        id: uuid4(),
+        choice: 'Choice 1',
+      },
+      {
+        id: uuid4(),
+        choice: 'Choice 2',
+      },
+    ],
   },
 
   renderSettings: function (
@@ -318,7 +327,7 @@ export const RadioButtonsElement = {
   },
 };
 
-export const TextAreaElement = {
+const TextAreaElement = {
   title: 'Textarea',
   name: 'textarea',
   description: 'Allows to write text.',
