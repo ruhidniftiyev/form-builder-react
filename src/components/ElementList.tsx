@@ -2,26 +2,12 @@ import React from 'react';
 import ElementItem from './ElementItem';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent, isSelected } from '../store/slices/FormSlice';
-import {
-  CheckBoxElement,
-  RadioButtonsElement,
-  SelectElement,
-  TextAreaElement,
-  TextInput,
-} from './FormElements';
+import { builderElements } from './FormElements';
 import { v4 as uuid4 } from 'uuid';
 import { IBuilderElement } from '../models/IBuildingElements';
 
 const ElementList = () => {
   const dispatch = useAppDispatch();
-
-  const builderElements = [
-    TextInput,
-    SelectElement,
-    CheckBoxElement,
-    RadioButtonsElement,
-    TextAreaElement,
-  ];
 
   const addElementToContentAction = (element: IBuilderElement) => {
     let id = uuid4();

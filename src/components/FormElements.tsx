@@ -327,7 +327,7 @@ export const TextAreaElement = {
 
   settings: {
     label: 'Text area',
-    text: '',
+    // text: '',
   },
 
   renderSettings: function (
@@ -347,7 +347,7 @@ export const TextAreaElement = {
             handleTextAreaChange(newSettings);
           }}
         />
-        <label htmlFor={settings.text}>Text</label>
+        {/* <label htmlFor={settings.text}>Text</label>
         <input
           type="text"
           placeholder="Max 200 symbol"
@@ -357,7 +357,7 @@ export const TextAreaElement = {
             const newSettings = { ...settings, text: e.target.value };
             handleTextAreaChange(newSettings);
           }}
-        />
+        /> */}
       </>
     );
   },
@@ -365,8 +365,16 @@ export const TextAreaElement = {
     return (
       <>
         <label htmlFor={this.settings.label}>{this.settings.label}</label>
-        <textarea className="form-builder__form-element__textarea">{this.settings.text}</textarea>
+        <textarea rows={10} className="form-builder__form-element__textarea"></textarea>
       </>
     );
   },
 };
+
+export const builderElements = [
+  TextInput,
+  SelectElement,
+  CheckBoxElement,
+  RadioButtonsElement,
+  TextAreaElement,
+];

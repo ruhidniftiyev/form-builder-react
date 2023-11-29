@@ -36,6 +36,7 @@
       width: 97%;
       // height: 120px;
       min-height: 120px;
+      max-width: 100%;
       height: auto;
       border: none;
       margin-bottom: 5px;
@@ -69,6 +70,14 @@
             margin-right: 15px;
           }
         }
+      }
+
+      &__textarea {
+        margin-top: 10px;
+        max-width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 10px;
       }
 
       label {

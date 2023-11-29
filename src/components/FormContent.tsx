@@ -1,24 +1,11 @@
 import React from 'react';
 import FormBuilder from './FormBuilder';
-import {
-  CheckBoxElement,
-  RadioButtonsElement,
-  SelectElement,
-  TextAreaElement,
-  TextInput,
-} from './FormElements';
+import { builderElements } from './FormElements';
 import { useFormBuilder } from '../hooks/useFormBuilder';
 import { useAppSelector } from '../hooks/useAppSelector';
 
 const FormContent = () => {
   const content = useAppSelector((store) => store.formSlice.content);
-  const builderElements = [
-    TextInput,
-    SelectElement,
-    CheckBoxElement,
-    RadioButtonsElement,
-    TextAreaElement,
-  ];
 
   const form = useFormBuilder({
     extensions: builderElements,
