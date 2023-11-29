@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectElement, TextInput } from './FormElements';
+import { CheckBoxElement, SelectElement, TextInput } from './FormElements';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useFormBuilder } from '../hooks/useFormBuilder';
 import { useAppDispatch } from '../hooks/useAppDispatch';
@@ -8,7 +8,7 @@ import { SettingsType } from '../models/IFormElement';
 import { IBuilderElement } from '../models/IBuildingElements';
 
 const SettingsContent = () => {
-  const builderElements = [TextInput, SelectElement];
+  const builderElements = [TextInput, SelectElement, CheckBoxElement];
 
   const dispatch = useAppDispatch();
 

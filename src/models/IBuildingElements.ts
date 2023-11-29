@@ -1,4 +1,6 @@
-import { SettingsType } from './IFormElement';
+import { ICheckBoxSettings, IInputSettings, ISelectSettings } from './IFormElement';
+
+type SettingsType = IInputSettings | ISelectSettings | ICheckBoxSettings;
 
 export interface IBuilderElement {
   id?: any;

@@ -1,10 +1,10 @@
 export interface IFormElement {
   id?: string;
   element: string;
-  settings: IInputSettings | ISelectSettings;
+  settings: IInputSettings | ISelectSettings | ICheckBoxSettings;
 }
 
-export type SettingsType = IInputSettings | ISelectSettings;
+export type SettingsType = IInputSettings | ISelectSettings | ICheckBoxSettings;
 
 export interface IInputSettings {
   label: string;
@@ -19,4 +19,9 @@ export interface ISelectOption {
 export interface ISelectSettings {
   label: string;
   options?: ISelectOption[];
+}
+
+export interface ICheckBoxSettings {
+  label: string;
+  value?: string;
 }

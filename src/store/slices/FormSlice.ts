@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IFormElement, IInputSettings, ISelectSettings } from '../../models/IFormElement';
+import { IFormElement, SettingsType } from '../../models/IFormElement';
 
 interface IFormState {
   selectedElementId: string | undefined;
@@ -27,7 +27,7 @@ const formSlice = createSlice({
         state.selectedElementId = state.content[state.content.length - 1].id;
       }
     },
-    editElementInContent: (state, action: PayloadAction<IInputSettings | ISelectSettings>) => {
+    editElementInContent: (state, action: PayloadAction<SettingsType>) => {
       state.content = state.content.map((el: any) =>
         el.id === state.selectedElementId ? { ...el, settings: action.payload } : el,
       );

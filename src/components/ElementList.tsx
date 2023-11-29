@@ -2,18 +2,26 @@ import React from 'react';
 import ElementItem from './ElementItem';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { addElementToContent, isSelected } from '../store/slices/FormSlice';
-import { SelectElement, TextInput } from './FormElements';
+import { CheckBoxElement, SelectElement, TextInput } from './FormElements';
 import { v4 as uuid4 } from 'uuid';
 import { IBuilderElement } from '../models/IBuildingElements';
+import { IFormElement } from '../models/IFormElement';
 
 const ElementList = () => {
   const dispatch = useAppDispatch();
 
-  const builderElements = [TextInput, SelectElement];
+  const builderElements = [
+    TextInput,
+    SelectElement,
+    CheckBoxElement,
+    // CheckBoxElement,
+    // SelectElement,
+  ];
 
   const addElementToContentAction = (element: IBuilderElement) => {
     let id = uuid4();
-    dispatch(addElementToContent({ id, element: element.name, settings: element.settings }));
+    let newElement = { id, element: element.name, settings: element.settings };
+    dispatch(addElementToContent(newElement));
     dispatch(isSelected(id));
   };
 
@@ -25,7 +33,7 @@ const ElementList = () => {
           <ElementItem
             onClick={() => addElementToContentAction(element)}
             {...element}
-            key={element.title}
+            key={element.name}
           />
         ))}
       </div>

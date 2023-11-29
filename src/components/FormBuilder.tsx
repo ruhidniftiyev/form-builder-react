@@ -36,6 +36,8 @@ const FormBuilder: FC<FormBuilderProps> = ({ form }) => {
     dispatch(isSelected(id));
   };
 
+  console.log(form);
+
   return (
     <div ref={drop} className="form-builder">
       <form className="form-builder__form">
