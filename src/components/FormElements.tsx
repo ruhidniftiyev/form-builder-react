@@ -1,8 +1,8 @@
 import { LuTextCursorInput } from 'react-icons/lu';
 import { MdOutlinePlaylistAddCheck } from 'react-icons/md';
-import { useAppDispatch } from '../hooks/useAppDispatch';
-import { editElementInContent } from '../store/slices/FormSlice';
-import React from 'react';
+import { IoIosAddCircle } from 'react-icons/io';
+import { v4 as uuid4 } from 'uuid';
+import { TiDelete } from 'react-icons/ti';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
@@ -25,9 +25,10 @@ export const TextInput = {
         <input
           type="text"
           placeholder={settings.label}
+          value={settings.label}
           className="settings-content__form-input"
           onChange={(e) => {
-            const newSettings = { ...settings, label: e.target.value || 'Text input' };
+            const newSettings = { ...settings, label: e.target.value };
             handleInputChange(newSettings);
           }}
         />
@@ -68,17 +69,65 @@ export const SelectElement = {
 
   settings: {
     label: 'Select',
-    options: ['Option 1', 'Option 2'],
+    options: [],
   },
 
-  renderSettings: function () {
+  renderSettings: function (settings: any, handleSelectChange: (newSettings: any) => void) {
     return (
       <>
+        <label htmlFor={settings.label}>Label</label>
         <input
-          placeholder="Select"
-          value={this.settings.label}
-          onChange={(e) => (this.settings.label = e.target.value)}
+          value={settings.label}
+          className="settings-content__form-input"
+          placeholder={settings.label}
+          onChange={(e) => {
+            const newSettings = { ...settings, label: e.target.value };
+            handleSelectChange(newSettings);
+          }}
         />
+        <label htmlFor={settings.options}>Choices</label>
+        {settings.options.map((item: { id: string; option: string }) => (
+          <div className="settings-content__form-select__option">
+            <input
+              className="settings-content__form-select__option-input"
+              key={item.id}
+              type="text"
+              value={item.option}
+              onChange={(e) => {
+                const updatedOptions = settings.options.map((el: any) =>
+                  el.id === item.id ? { ...el, option: e.target.value } : el,
+                );
+                const newSettings = {
+                  ...settings,
+                  options: updatedOptions,
+                };
+                handleSelectChange(newSettings);
+              }}
+            />
+            <TiDelete
+              onClick={(e) => {
+                const newSettings = {
+                  ...settings,
+                  options: settings.options.filter((el: any) => el.id !== item.id),
+                };
+                handleSelectChange(newSettings);
+              }}
+              className="settings-content__form-select__option-delete"
+            />
+          </div>
+        ))}
+        <button
+          onClick={(e) => {
+            const newSettings = {
+              ...settings,
+              options: [...settings.options, { id: uuid4(), option: '' }],
+            };
+            handleSelectChange(newSettings);
+          }}
+          className="settings-content__form-select__addBtn">
+          <IoIosAddCircle className="settings-content__form-select__addIcon" />
+          Add new
+        </button>
       </>
     );
   },
@@ -89,7 +138,9 @@ export const SelectElement = {
         <label htmlFor="">{this.settings.label}</label>
         <select className="form-builder__form-element__select" name="" id="">
           {this.settings.options.length > 0 &&
-            this.settings.options.map((option: any) => <option value={option}>{option}</option>)}
+            this.settings.options.map((option: any) => (
+              <option value={option.option}>{option.option}</option>
+            ))}
         </select>
       </>
     );

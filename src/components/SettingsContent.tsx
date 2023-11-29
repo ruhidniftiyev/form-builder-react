@@ -27,7 +27,7 @@ const SettingsContent = (props: Props) => {
 
   return (
     <div className="settings-content">
-      <form className="settings-content__form">
+      <form onSubmit={(e) => e.preventDefault()} className="settings-content__form">
         {form.map((el: any) => {
           return el.id === selectedElement && el.renderSettings(el.settings, handleInputChange);
         })}
