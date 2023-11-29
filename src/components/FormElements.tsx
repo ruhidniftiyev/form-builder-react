@@ -3,12 +3,7 @@ import { MdOutlinePlaylistAddCheck } from 'react-icons/md';
 import { IoIosAddCircle } from 'react-icons/io';
 import { v4 as uuid4 } from 'uuid';
 import { TiDelete } from 'react-icons/ti';
-import {
-  IInputSettings,
-  ISelectOption,
-  ISelectSettings,
-  SettingsType,
-} from '../models/IFormElement';
+import { IInputSettings, ISelectOption, ISelectSettings } from '../models/IFormElement';
 
 const iconStyles = { color: 'white', width: '50px', height: '1.6em' };
 
@@ -150,8 +145,8 @@ export const SelectElement = {
         <label htmlFor="">{this.settings.label}</label>
         <select className="form-builder__form-element__select" name="" id="">
           {this.settings.options.length > 0 &&
-            this.settings.options.map((option: any) => (
-              <option value={option.option}>{option.option}</option>
+            this.settings.options.map((optionElement: ISelectOption) => (
+              <option value={optionElement.option}>{optionElement.option}</option>
             ))}
         </select>
       </>

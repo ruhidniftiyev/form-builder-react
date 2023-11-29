@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { SelectElement, TextInput } from './FormElements';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useFormBuilder } from '../hooks/useFormBuilder';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { editElementInContent } from '../store/slices/FormSlice';
+import { SettingsType } from '../models/IFormElement';
+import { IBuilderElement } from '../models/IBuildingElements';
 
-type Props = {};
-
-const SettingsContent = (props: Props) => {
+const SettingsContent = () => {
   const builderElements = [TextInput, SelectElement];
 
   const dispatch = useAppDispatch();
@@ -20,15 +20,18 @@ const SettingsContent = (props: Props) => {
     content,
   });
 
-  const handleInputChange = (newPlaceholder: any) => {
-    console.log('Изменение в TextInput:', newPlaceholder);
-    dispatch(editElementInContent(newPlaceholder));
+  const handleInputChange = (NewSettingFromElements: SettingsType) => {
+    dispatch(editElementInContent(NewSettingFromElements));
+  };
+
+  const defaultSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
   };
 
   return (
     <div className="settings-content">
-      <form onSubmit={(e) => e.preventDefault()} className="settings-content__form">
-        {form.map((el: any) => {
+      <form onSubmit={defaultSubmit} className="settings-content__form">
+        {form.map((el: IBuilderElement) => {
           return el.id === selectedElement && el.renderSettings(el.settings, handleInputChange);
         })}
       </form>

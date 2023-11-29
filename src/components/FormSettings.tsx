@@ -1,9 +1,8 @@
 import React from 'react';
 import SettingsContent from './SettingsContent';
 
-type Props = {};
 
-const FormSettings = (props: Props) => {
+const FormSettings = () => {
   return (
     <div className="form-settings">
       <p className="form-settings__title">SETTINGS</p>
