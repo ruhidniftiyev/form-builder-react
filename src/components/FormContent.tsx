@@ -10,7 +10,7 @@ const FormContent = () => {
   const form = useFormBuilder({
     extensions: builderElements,
     content: content,
-  });
+  }); 
 
   return (
     <div className="form-content">

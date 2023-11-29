@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Form builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my React application that utilizes Webpack, SCSS, Redux Toolkit (RTK),TypeScript, React-DnD and React Router!
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project aims to showcase the integration of various powerful tools and libraries within a React application to ensure efficient development and seamless user experience.
 
-### `yarn start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before running this application, ensure you have the following installed:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Git
+- Node.js
+- Yarn
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `yarn build`
+1. **Clone the repository:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+ git clone https://github.com/ruhidniftiyev/form-builder-react.git
+ cd your-project
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.**Install dependencies**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn install
+```
 
-### `yarn eject`
+3.**Running the App**
+Start the development server and run the application:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will launch in development mode at http://localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4.**Building for Production**
+To generate a production build:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+yarn build
+```
 
-## Learn More
+This will create an optimized production build in the build folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Documentation
+For more in-depth information about each tool or library, refer to their respective documentation.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for checking out my React application! Happy coding!
