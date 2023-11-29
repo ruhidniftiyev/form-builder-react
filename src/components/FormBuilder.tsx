@@ -10,25 +10,27 @@ import { useDrop } from 'react-dnd';
 import { IFormElement } from '../models/IFormElement';
 import { v4 as uuid4 } from 'uuid';
 import { useAppSelector } from '../hooks/useAppSelector';
+import { IBuilderElement } from '../models/IBuildingElements';
 
-type Props = {
-  form: any;
+type FormBuilderProps = {
+  form: IBuilderElement[];
 };
 
-const FormBuilder: FC<Props> = ({ form }) => {
+const FormBuilder: FC<FormBuilderProps> = ({ form }) => {
   const dispatch = useAppDispatch();
-  const selectedElId = useAppSelector((store) => store.formSlice.selectedElementId);
-
-  const removeFormElementAction = (id: string) => {
-    dispatch(removeElementFromContent(id));
-  };
-
+  
   const [, drop] = useDrop({
     accept: 'element',
     drop: (item: IFormElement) => {
       dispatch(addElementToContent({ ...item, id: uuid4() }));
     },
   });
+
+  const selectedElId = useAppSelector((store) => store.formSlice.selectedElementId);
+
+  const removeFormElementAction = (id: string) => {
+    dispatch(removeElementFromContent(id));
+  };
 
   const isSelectedAction = (id: string) => {
     dispatch(isSelected(id));
@@ -38,21 +40,21 @@ const FormBuilder: FC<Props> = ({ form }) => {
     <div ref={drop} className="form-builder">
       <form className="form-builder__form">
         {form.length > 0 &&
-          form.map((el: any) => (
+          form.map((formElement: IBuilderElement) => (
             <div
-              key={el.id}
+              key={formElement.id}
               className={
-                selectedElId === el.id
+                selectedElId === formElement.id
                   ? 'form-builder__form-element selected'
                   : 'form-builder__form-element'
               }
-              onClick={() => isSelectedAction(el.id)}>
-              {el.render()}
-              {selectedElId === el.id && (
+              onClick={() => isSelectedAction(formElement.id)}>
+              {formElement.render()}
+              {selectedElId === formElement.id && (
                 <TiDelete
                   onClick={(e: any) => {
                     e.stopPropagation();
-                    removeFormElementAction(el.id);
+                    removeFormElementAction(formElement.id);
                   }}
                   className="form-builder__form-element__clear"
                 />

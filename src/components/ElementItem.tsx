@@ -1,17 +1,18 @@
 import React, { FC } from 'react';
 import { useDrag } from 'react-dnd';
+import { IInputSettings, ISelectSettings } from '../models/IFormElement';
 
 type ElementItemsProps = {
   name: string;
   icon: string | undefined;
   color: string;
   title: string;
-  settings: any[];
+  settings: IInputSettings | ISelectSettings;
   onClick: () => void;
 };
 
 const ElementItem: FC<ElementItemsProps> = ({ name, icon, color, title, onClick, settings }) => {
-  const [, drag] = useDrag<any>({
+  const [, drag] = useDrag({
     type: 'element',
     item: { element: name, settings },
   });
